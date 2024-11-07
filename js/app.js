@@ -29,7 +29,7 @@ do {
     
 else if (edadIngresada < 18) {
     alert("Hola" + " " + nombreIngresado + " " + "¡Lo sentimos! Usted es menor de edad, por lo tanto no puede acceder a nuestro contenido");
-    window.location.href = "https://www.youtube.com/watch?v=tW6QUJL8V24"; 
+    window.location.href = "https://www.google.com/"; 
 }
 
 
