@@ -9,25 +9,22 @@
 
 h1 {
     text-align: center;
-    color: brown;
-    margin: 0;
+    color: green;
+    margin: 20px;
     padding: 0;
     font-size: 50px;
 }
 
 p {
     text-align: center;
-    color: tomato;
+    color: black;
     margin: 0;
     font-size: 20px;
 }
 
 header {
-    background-color: antiquewhite;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgb(120, 228, 192);
+    height: auto;
 }
 
 main {
@@ -45,7 +42,7 @@ main {
 }
 
 footer {
-    background-color: antiquewhite;
+    background-color: rgb(120, 228, 192);
     display: flex;
     position: sticky;
     bottom: 0;
