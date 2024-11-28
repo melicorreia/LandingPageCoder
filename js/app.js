@@ -1,33 +1,45 @@
-let nombreIngresado;
-let edadIngresada;
-
-do {
-    nombreIngresado = prompt("Ingrese su nombre");
-    edadIngresada = prompt ("Ingrese su edad");
-    if (nombreIngresado == "" || edadIngresada == "") {
-        alert("Complete todos los datos para continuar");
+class Producto {
+    constructor(codigo = 0, nombre = " ", categoria = " ", precio = 0) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.precio = precio;
     }
-} while (nombreIngresado == "" || edadIngresada == "")
-
-
-if (edadIngresada >= 18) {
-    alert("Hola" + " " + nombreIngresado + " " + "¡Bienvenido/a a nuestro sitio!" + " " + "Usted es mayor de edad, por lo tanto puede acceder a nuestro contenido");
-    const claveCorrecta = "claveJs123";
-let claveIngresada;
-
-do {
-    claveIngresada = prompt("Ingrese su clave para acceder: (Ayudita: la clave es claveJs123)").trim();
-    if (claveIngresada !== claveCorrecta) {
-        alert("Clave incorrecta, por favor intente nuevamente. Recuerde que el sistema distingue mayúsculas y minúsculas, no usar espacios ni símbolos.");
+    precioConIVA() {
+        return this.precio * 1.21;
     }
-
-    else if (claveIngresada == claveCorrecta) {
-        alert ("Clave correcta, acceso habilitado");
-    }
-} while (claveIngresada !== claveCorrecta);
 }
-    
-else if (edadIngresada < 18) {
-    alert("Hola" + " " + nombreIngresado + " " + "¡Lo sentimos! Usted es menor de edad, por lo tanto no puede acceder a nuestro contenido");
-    window.location.href = "https://www.google.com/"; 
-}
+
+const productos = [
+    new Producto(1, 'Taza de polímero', 'Tazas', 6000),
+    new Producto(2, 'Taza de céramica', 'Tazas', 10000),
+    new Producto(3, 'Portaretrato simple', 'Cuadros', 6500),
+    new Producto(4, 'Portaretrato doble', 'Cuadros', 8500),
+    new Producto(5, 'Cuaderno', 'Librería', 20000),
+    new Producto(6, 'Agenda', 'Librería', 22000),
+    new Producto(7, 'Tarjetas', 'Papelería', 3500),
+    new Producto(8, 'Etiquetas', 'Papelería', 3500)
+];
+
+// NUEVO ARRAY CON EL PRECIO CON IVA
+
+const productosConIVA = productos.map(producto => {
+    return {
+        precioConIVA: producto.precioConIVA()
+    };
+});
+
+// FILTRADO POR CATEGORÍA PARA EN UN FUTURO ARMAR LA PAGE DE CADA UNA
+
+const categoriaTazas = productos.filter(producto => producto.categoria == "Tazas");
+const categoriaCuadros = productos.filter(producto => producto.categoria == "Cuadros");
+const categoriaLibreria = productos.filter(producto => producto.categoria == "Librería");
+const categoriaPapeleria = productos.filter(producto => producto.categoria == "Papelería");
+
+console.log(categoriaTazas);
+console.log(categoriaCuadros);
+console.log(categoriaLibreria);
+console.log(categoriaPapeleria);
+
+
+
