@@ -287,9 +287,9 @@ figure {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
     padding: 5px;
     margin-bottom: 20px;
+    width: 50px;
 }
 
 .close-button:hover {
@@ -338,4 +338,40 @@ figure {
     align-items: center;
     background-color: white;
     transition: background-color 0.5s ease;
+}
+
+.selector {
+    display: inline-block;
+    flex-direction: column;
+    justify-items: center;
+    width: 100%;
+}
+
+main textarea {
+    width: 30vw;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.btn-ganador {
+    background-color: rgb(251, 96, 117);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.btn-ganador:hover {
+    background-color: rgb(120,221,208);
+}
+
+.botones-carrito {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
 }

@@ -182,3 +182,23 @@ vaciarCarritoButton.addEventListener('click', vaciarCarrito)
 
 
 cargarProductos();
+
+function seleccionarGanador() {
+    // Obtener los nombres ingresados en el textarea
+    const textarea = document.getElementById("participantes");
+    const participantes = textarea.value.split("\n").filter(nombre => nombre.trim() !== "");
+
+    // Verificar si hay participantes
+    if (participantes.length === 0) {
+        alert("Por favor, ingresa al menos un participante.");
+        return;
+    }
+
+    // Seleccionar un ganador aleatoriamente
+    const indiceGanador = Math.floor(Math.random() * participantes.length);
+    const ganador = participantes[indiceGanador];
+
+    // Mostrar el nombre del ganador
+    const ganadorDiv = document.getElementById("ganador");
+    ganadorDiv.textContent = `¡El ganador es: ${ganador}! 🎉`;
+}
