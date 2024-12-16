@@ -19,7 +19,6 @@ const productos = [
     },
 ];
 
-
 const contenedorProductos = document.querySelector("#contenedor-productos");
 function agregar(id) {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
@@ -42,7 +41,6 @@ function agregar(id) {
     actualizarCarrito();
 }
 
-
 function quitarProducto(id) {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     const productoIndex = carrito.findIndex(producto => producto.id === id);
@@ -61,9 +59,6 @@ function quitarProducto(id) {
     actualizarCarrito();
     actualizarContador(carrito.reduce((suma, item) => suma + item.cantidad, 0));
 }
-
-
-/* ACTUALIZAR CARRITO */
 
 function actualizarCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
@@ -84,7 +79,6 @@ function actualizarCarrito() {
     `;
     items.append(encabezado);
 
-    // PRODUCTOS EN EL CARRITO
     carrito.forEach(({ id, cantidad }) => {
         const producto = productos.find(producto => id === producto.id);
 
@@ -96,12 +90,12 @@ function actualizarCarrito() {
         <p>$${producto.precio}</p>
         <div class="boton-container1">
             <button class="eliminar-producto" onclick="quitarProducto('${id}')">
-                <img src="https://img.icons8.com/material-outlined/24/x-coordinate.png" alt="x-coordinate"/>
+                <i class="fa-solid fa-minus"></i>
             </button>
         </div>
         <div class="boton-container2">
             <button class="agregar-producto" onclick="agregar('${id}')">
-                <img src="https://img.icons8.com/material-rounded/24/filled-plus-2-math.png" alt="filled-plus-2-math"/>
+                <i class="fa-solid fa-plus"></i>
             </button>
         </div>
     `;
@@ -110,7 +104,6 @@ function actualizarCarrito() {
         
     });
 
-    // TOTAL
     const total = document.createElement("div");
     total.classList.add("carrito-total");
     total.innerHTML = `
@@ -131,15 +124,11 @@ function actualizarContador(cantidad) {
     contador.textContent = cantidad
 }
 
-/* VACIAR CARRITO */
-
 function vaciarCarrito() {
     localStorage.removeItem("carrito");
     actualizarContador(0);
     document.getElementById("contenedor-carrito-productos").innerHTML = "";
 }
-
-/* CARGAR TARJETAS */
 
 function cargarProductos() {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
@@ -156,7 +145,7 @@ function cargarProductos() {
                 <p>$${producto.precio}</p>
             </div>
             <button onclick="agregar(id)" class="producto-agregar" id='${producto.id}'>Agregar al carrito</button>
-         `;
+        `;
 
         contenedorProductos.append(div);
 
@@ -167,38 +156,33 @@ const popover = document.getElementById('popover');
 const closeButton = document.getElementById('close-popover');
 const vaciarCarritoButton = document.getElementById('vaciar-carro')
 
-// MOSTRAR EL POP-OVER
 popoverButton.addEventListener('click', () => {
     actualizarCarrito()
     popover.style.display = 'block';
 });
 
-// CERRAR EL POP-OVER
 closeButton.addEventListener('click', () => {
     popover.style.display = 'none';
 });
 
 vaciarCarritoButton.addEventListener('click', vaciarCarrito)
 
-
 cargarProductos();
 
+// SELECTOR DE SORTEOS
+
 function seleccionarGanador() {
-    // Obtener los nombres ingresados en el textarea
     const textarea = document.getElementById("participantes");
     const participantes = textarea.value.split("\n").filter(nombre => nombre.trim() !== "");
 
-    // Verificar si hay participantes
     if (participantes.length === 0) {
         alert("Por favor, ingresa al menos un participante.");
         return;
     }
 
-    // Seleccionar un ganador aleatoriamente
     const indiceGanador = Math.floor(Math.random() * participantes.length);
     const ganador = participantes[indiceGanador];
 
-    // Mostrar el nombre del ganador
     const ganadorDiv = document.getElementById("ganador");
     ganadorDiv.textContent = `¡El ganador es: ${ganador}! 🎉`;
 }

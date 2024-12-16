@@ -57,7 +57,6 @@ header .navbar .btn:hover {
     color: white;
 }
 
-
 main {
     min-height: 100vh;
     width: auto;
@@ -79,7 +78,6 @@ main h3 {
     padding-bottom: 20px;
 }
 
-
 main .fa-square-whatsapp {
     font-size: 70px;
     color: rgb(120,221,208);
@@ -91,8 +89,6 @@ main .fa-square-whatsapp {
 main a i:hover {
     transform: scale(1.1, 1.1);
 }
-
-
 
 footer {
     height: auto;
@@ -132,6 +128,10 @@ footer p {
     justify-content: space-between;   
 }
 
+.producto-precio p {
+    margin: 0;
+}
+
 .producto::before {
     content: "";
     z-index: -10;
@@ -162,12 +162,6 @@ footer p {
     transform: scale(1.02, 1.02);
 }
 
-
-
-
-
-
-
 .container-header {
     display: flex;
     background-color: white;
@@ -181,7 +175,6 @@ footer p {
     cursor: pointer;
 }
 
-
 .container-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -190,8 +183,6 @@ footer p {
     justify-content: center;
     gap: 20px;
 }
-
-
 
 .info-card {
     flex-grow: 1;
@@ -205,6 +196,7 @@ footer p {
 .producto-titulo {
     flex-grow: 1;
     font-weight: bold;
+    margin: 0;
 }
 
 .producto-agregar {
@@ -218,8 +210,9 @@ footer p {
     width:fit-content;
     height: 40px;
     cursor: pointer;
+    margin-top: 20px;
+    padding: 15px;
 }
-
 
 .producto-agregar:hover {
     background-color: rgb(251, 96, 117);
@@ -254,8 +247,6 @@ figure {
     position: relative;
 }
 
-
-
 .popover {
     position: fixed;
     top: 90px;
@@ -268,7 +259,6 @@ figure {
     z-index: 1000;
     min-width: 25vw;
     display: none;
-
 }
 
 .popover p {
@@ -328,8 +318,7 @@ figure {
 
 .eliminar-producto, .agregar-producto {
     border: none;
-    color: white;
-    border-radius: 50%;
+    color: black;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -337,7 +326,6 @@ figure {
     justify-content: center;
     align-items: center;
     background-color: white;
-    transition: background-color 0.5s ease;
 }
 
 .selector {
