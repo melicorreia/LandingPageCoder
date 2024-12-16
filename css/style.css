@@ -66,13 +66,12 @@ main {
 main h1 {
     text-align: center;
     padding-top: 40px;
-    padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
     grid-column: 1/-1;
-    font-size: 60px;
+    font-size: 40px;
 }
 main h3 {
     text-align: center;
@@ -93,16 +92,7 @@ main a i:hover {
     transform: scale(1.1, 1.1);
 }
 
-.btn-carrito {
-    background-color: rgb(251, 96, 117);
-    font-weight: bold;
-    color: white;
-}
 
-.btn-carrito:hover {
-    background-color: rgb(120,221,208);
-    color: white;
-}
 
 footer {
     height: auto;
@@ -207,7 +197,7 @@ footer p {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
     padding: 20px;
     gap: 10px;
 }
@@ -225,10 +215,11 @@ footer p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width:fit-content;
     height: 40px;
     cursor: pointer;
 }
+
 
 .producto-agregar:hover {
     background-color: rgb(251, 96, 117);
@@ -241,7 +232,6 @@ figure {
 
 #contenedor-carrito-productos {
     overflow: auto;
-    max-height: 50vh;
 }
 
 .cuenta {
@@ -270,18 +260,24 @@ figure {
     position: fixed;
     top: 90px;
     right: 10vw;
-    width: 450px;
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 15px;
-    display: none;
     z-index: 1000;
+    min-width: 25vw;
+    display: none;
+
 }
 
 .popover p {
     margin: 0 0 10px;
+}
+
+.fa-cart-shopping {
+    font-size: 30px;
+    padding: 5px;
 }
 
 .close-button {
@@ -342,9 +338,4 @@ figure {
     align-items: center;
     background-color: white;
     transition: background-color 0.5s ease;
-}
-
-
-.carrito {
-    
 }

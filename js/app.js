@@ -155,7 +155,7 @@ function cargarProductos() {
             <div class="producto-precio">
                 <p>$${producto.precio}</p>
             </div>
-            <button onclick="agregar(id)" class="producto-agregar" id='${producto.id}'>AGREGAR AL CARRITO</button>
+            <button onclick="agregar(id)" class="producto-agregar" id='${producto.id}'>Agregar al carrito</button>
          `;
 
         contenedorProductos.append(div);
