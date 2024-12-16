@@ -67,6 +67,12 @@ main h1 {
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    grid-column: 1/-1;
+    font-size: 60px;
 }
 main h3 {
     text-align: center;
@@ -115,31 +121,31 @@ footer p {
     text-align: center;
 }
 
-
-main .cardsServicios {
-    width: 100%;
-    margin: 0 0 50px 0;
-    padding: 0 15vw;
+.producto {
     display: flex;
-}
-main .cardsServicios .cardServicios {
-    width: 30vw;
-    height: auto;
-    text-align: center;
-}
-main .cardsServicios .cardServicios .card-img-top {
-    z-index: 3;
-}
-main .cardsServicios .cardServicios .card-body {
-    z-index: 3;
-    display: flex;
-    position: static;
     flex-direction: column;
+    background-color: white;
+    font-size: 20px;
+    margin: 50px;
+    width: 300px;
+    height: 400px;
+    max-height: 100vh;
 }
-main .cardsServicios .cardServicios::before {
+
+.producto img {
+    width: 300px;
+    height: 300px;
+}
+
+.producto-precio {
+    display: flex;
+    justify-content: space-between;   
+}
+
+.producto::before {
     content: "";
-    z-index: 1;
-    position: absolute;
+    z-index: -10;
+    position:fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -151,9 +157,9 @@ main .cardsServicios .cardServicios::before {
     transition: opacity 0.3s;
     border-radius: inherit;
 }
-main .cardsServicios .cardServicios::after {
+.producto::after {
     content: "";
-    z-index: 1;
+    z-index: -10;
     position: absolute;
     top: 0;
     right: 0;
@@ -162,6 +168,183 @@ main .cardsServicios .cardServicios::after {
     background: inherit;
     border-radius: inherit;
 }
-main .cardsServicios .cardServicios:hover {
+.producto:hover {
     transform: scale(1.02, 1.02);
+}
+
+
+
+
+
+
+
+.container-header {
+    display: flex;
+    background-color: white;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+}
+
+.container-header img {
+    cursor: pointer;
+}
+
+
+.container-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    max-width: 50%;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+.info-card {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    gap: 10px;
+}
+
+.producto-titulo {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.producto-agregar {
+    background-color: rgb(120,221,208);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.producto-agregar:hover {
+    background-color: rgb(251, 96, 117);
+}
+
+
+figure {
+    position: relative;
+}
+
+#contenedor-carrito-productos {
+    overflow: auto;
+    max-height: 50vh;
+}
+
+.cuenta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 11px;
+    cursor: pointer;
+}
+.popover-container {
+    position: relative;
+}
+
+
+
+.popover {
+    position: fixed;
+    top: 90px;
+    right: 10vw;
+    width: 450px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+.popover p {
+    margin: 0 0 10px;
+}
+
+.close-button {
+    background-color: rgb(251, 96, 117);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.close-button:hover {
+    background-color: rgb(120,221,208);
+}
+
+.carrito-header, .producto-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.carrito-header {
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    text-transform: uppercase;
+}
+
+.producto-row p, .carrito-total p {
+    margin: 0;
+}
+
+.carrito-total {
+    display: grid; 
+    grid-template-columns: 1fr 10fr 1fr 1fr;
+    font-weight: bold;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.eliminar-producto, .agregar-producto {
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: background-color 0.5s ease;
+}
+
+
+.carrito {
+    
 }
