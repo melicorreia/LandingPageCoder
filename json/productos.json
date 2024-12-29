@@ -1,0 +1,38 @@
+[
+    {
+        "id": "01",
+        "titulo": "Curriculum Vitae",
+        "imagen": "img/productos/cv.png",
+        "precio": 3000
+    },
+    {
+        "id": "02",
+        "titulo": "Tarjeta personal",
+        "imagen": "img/productos/tarjeta.png",
+        "precio": 3500
+    },
+    {
+        "id": "03",
+        "titulo": "Invitación para eventos",
+        "imagen": "img/productos/invitacion.png",
+        "precio": 4000
+    },
+    {
+        "id": "01",
+        "titulo": "Diseño de logo y branding",
+        "imagen": "img/productos/logoproducto.png",
+        "precio": 15000
+    },
+    {
+        "id": "02",
+        "titulo": "Lista de precios / Menú",
+        "imagen": "img/productos/listaprecios.png",
+        "precio": 3500
+    },
+    {
+        "id": "03",
+        "titulo": "Certificados y diplomas",
+        "imagen": "img/productos/certificado.png",
+        "precio": 3000
+    }
+]

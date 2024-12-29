@@ -3,84 +3,102 @@
     margin: auto;
     padding: 0;
     box-sizing: border-box;
-    max-width: 100vw;
+    max-width: 100%;
     font-family: "Nunito", sans-serif;
 }
 
+body {
+    background-color: var(--color-text-secondary);
+}
 header {
     width: 100%;
-    background-color: aliceblue;
+    background-color: var(--color-bg-tertiary);
     display:inline-flex;
     align-self: center;
     position: sticky;
     top: 0px;
     z-index: 10;
-    height: auto;
+    height: 15vh;
 }
 header .navbar {
-    height: auto;
+    height: 15vh;
+    display: flex;
+    align-items: center;
 }
 header .navbar .container-fluid {
     width: auto;
     justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 header .navbar .container-fluid .navbar-brand img {
-    height: 150px;
+    height: 120px;
+    margin-right: 70px;
 }
-header .navbar .navbar-collapse .navbar-nav .nav-item {
-    padding: 20px;
+header .navbar .navbar-collapse {
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+header .navbar .navbar-collapse .navbar-nav {
+    padding: 0px;
+    margin: 0px;
 }
 header .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
-    color: rgb(0, 0, 0);
+    color: var(--color-text-primary);
     font-size: 20px;
     padding: 50px;
 }
 header .navbar .navbar-collapse .navbar-nav .nav-item .nav-link-picker {
-    color: rgb(251, 96, 117);
+    color: var(--color-bg-primary);
 }
 header .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
-color: rgb(251, 96, 117);
+color: var(--color-bg-primary);
 }
 header .navbar .search {
-    margin-left: 60px;
-    margin-right: 60px;
+    padding: 0;
+    margin-left: 80px;
+    margin-right: 40px;
 }
 header .navbar .btn {
-    background-color: rgb(251, 96, 117);
+    background-color: var(--color-bg-primary);
     border: none;
-    color: white;
+    color: var(--color-text-secondary);
     width: auto;
     margin-left: 100px;
 }
 header .navbar .btn:hover {
-    background-color: rgb(120,221,208);
-    color: white;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
 }
 
 main {
-    min-height: 100vh;
     width: auto;
-    background-color: white;
+    background-color: var(--color-text-secondary);
+    margin-bottom: 50px;
+    min-height: 80vh;
 }
 main h1 {
     text-align: center;
-    padding-top: 40px;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
     grid-column: 1/-1;
     font-size: 40px;
+    color: var(--color-text-primary);
 }
 main h3 {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 20px;
+    color: var(--color-text-primary);
 }
-
 main .fa-square-whatsapp {
     font-size: 70px;
-    color: rgb(120,221,208);
+    color: var(--color-bg-secondary);
     display: flex;
     position: fixed;
     bottom: 60px;
@@ -92,9 +110,9 @@ main a i:hover {
 
 footer {
     height: auto;
-    background-color: aliceblue;
+    background-color: var(--color-bg-tertiary);
     display: flex;
-    color: black;
+    color: var(--color-text-primary);
     position: sticky;
     bottom: 0px;
     z-index: 3;
@@ -110,42 +128,36 @@ footer p {
 .producto {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--color-text-secondary);
     font-size: 20px;
     margin: 50px;
     width: 300px;
     height: 400px;
-    max-height: 100vh;
+    color: var(--color-text-primary);
 }
-
 .producto img {
     width: 300px;
     height: 300px;
 }
-
 .producto-precio {
     display: flex;
     justify-content: space-between;   
 }
-
 .producto-precio p {
     margin: 0;
 }
-
 .producto::before {
     content: "";
     z-index: -10;
-    position:fixed;
+    position:absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(45deg, rgb(34, 134, 165) -180%, white 180%);
-    transform: translate3d(0px, 0px, 0) scale(1.02);
-    filter: blur(10px);
+    background: linear-gradient(45deg, var(--color-bg-secondary) -180%, var(--color-text-secondary) 180%);
+    filter: blur(5px);
     opacity: var(1);
     transition: opacity 0.3s;
-    border-radius: inherit;
 }
 .producto::after {
     content: "";
@@ -164,13 +176,13 @@ footer p {
 
 .container-header {
     display: flex;
-    background-color: white;
+    background-color: var(--color-text-secondary);
     justify-content: space-around;
     align-items: center;
     width: 100%;
     padding: 30px;
+    height: auto;
 }
-
 .container-header img {
     cursor: pointer;
 }
@@ -200,9 +212,9 @@ footer p {
 }
 
 .producto-agregar {
-    background-color: rgb(120,221,208);
+    background-color: var(--color-bg-secondary);
     border: none;
-    color: white;
+    color: var(--color-text-secondary);
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -215,9 +227,16 @@ footer p {
 }
 
 .producto-agregar:hover {
-    background-color: rgb(251, 96, 117);
+    background-color: var(--color-bg-primary);
 }
 
+.swal2-container {
+    z-index: 9999;
+}
+
+.swal2-toast {
+    margin-top: 45px;
+}
 
 figure {
     position: relative;
@@ -231,11 +250,11 @@ figure {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: var(--color-text-primary);
     bottom: 0;
     right: 0;
     position: absolute;
-    color: white;
+    color: var(--color-text-secondary);
     font-size: 20px;
     border-radius: 50%;
     width: 20px;
@@ -243,6 +262,7 @@ figure {
     padding: 11px;
     cursor: pointer;
 }
+
 .popover-container {
     position: relative;
 }
@@ -251,7 +271,7 @@ figure {
     position: fixed;
     top: 90px;
     right: 10vw;
-    background-color: white;
+    background-color: var(--color-text-secondary);
     border: 1px solid #ccc;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -259,8 +279,8 @@ figure {
     z-index: 1000;
     min-width: 25vw;
     display: none;
+    color: var(--color-text-primary);
 }
-
 .popover p {
     margin: 0 0 10px;
 }
@@ -270,20 +290,19 @@ figure {
     padding: 5px;
 }
 
-.close-button {
-    background-color: rgb(251, 96, 117);
-    color: white;
+.carrito-button {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-secondary);
     border: none;
-    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    padding: 5px;
-    margin-bottom: 20px;
-    width: 50px;
+    width: 100px;
+    padding-top: 10px;
+    margin: 15px;
 }
 
-.close-button:hover {
-    background-color: rgb(120,221,208);
+.carrito-button:hover {
+    background-color: var(--color-bg-secondary);
 }
 
 .carrito-header, .producto-row {
@@ -297,7 +316,7 @@ figure {
 
 .carrito-header {
     font-weight: bold;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid var(--color-text-primary);
     text-transform: uppercase;
 }
 
@@ -309,8 +328,8 @@ figure {
     display: grid; 
     grid-template-columns: 1fr 10fr 1fr 1fr;
     font-weight: bold;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 2px solid var(--color-text-primary);
+    border-bottom: 2px solid var(--color-text-primary);
     padding: 10px 0;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -318,14 +337,14 @@ figure {
 
 .eliminar-producto, .agregar-producto {
     border: none;
-    color: black;
+    color: var(--color-text-primary);
     width: 40px;
     height: 40px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-text-secondary);
 }
 
 .selector {
@@ -343,8 +362,8 @@ main textarea {
 }
 
 .btn-ganador {
-    background-color: rgb(251, 96, 117);
-    color: white;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-secondary);
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -355,11 +374,103 @@ main textarea {
 }
 
 .btn-ganador:hover {
-    background-color: rgb(120,221,208);
+    background-color: var(--color-bg-secondary);
 }
 
 .botones-carrito {
     display: flex;
     flex-direction:row;
     justify-content: space-around;
+}
+
+.btn-carrito {
+    margin: 0;
+    padding: 10px;
+}
+
+.rowForm {
+    width: 40vw;
+    margin: 0 auto;
+    color: var(--color-text-primary);
+    .btnForm {
+        background-color: var(--color-bg-secondary);
+        border: 0;
+        color: var(--color-text-secondary);
+    }
+}
+
+:root {
+    --color-bg-primary: rgb(251, 96, 117); 
+    --color-bg-secondary: rgb(120,221,208);
+    --color-bg-tertiary:  aliceblue;
+    --color-text-primary: #000000;
+    --color-text-secondary: #ffffff; 
+}
+
+.dark-mode {
+    --color-bg-primary: rgb(251, 96, 117); 
+    --color-bg-secondary: rgb(120,221,208);
+    --color-bg-tertiary:  #000000;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #272727;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 100px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-bg-primary);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-bg-primary);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }

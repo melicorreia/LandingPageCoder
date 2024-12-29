@@ -1,25 +1,43 @@
-const productos = [
-    {
-        id: "01",
-        titulo: 'Curriculum Vitae',
-        imagen: "img/cv.png",
-        precio: 3000
-    },
-    {
-        id: "02",
-        titulo: 'Tarjeta Personal',
-        imagen: "img/tarjeta.png",
-        precio: 3500
-    },
-    {
-        id: "03",
-        titulo: 'Invitación Personalizada',
-        imagen: "img/invitacion.png",
-        precio: 4000
-    },
-];
+let productos = [];
+
+const obtenerProductos = async () => {
+    try {
+        const response = await fetch("/json/productos.json");
+        const data = await response.json();
+        
+        productos = data;
+        
+        console.log(productos);
+        cargarProductos();
+    } catch (error) {
+        Swal.fire({
+            title: "Página en mantenimiento",
+            text: "Disculpe las molestias ocasionadas, la página estará disponible a la brevedad. Mientras tanto puedes comunicarte por mail a lowindigital@gmail.com y le responderemos pronto",
+            color:" #000000",
+            backdrop: "url(/img/fondo1.jpg) center fixed",
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            showConfirmButton: false
+            });
+
+        console.log(error);
+    }
+};
+obtenerProductos();
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 1500,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
 function agregar(id) {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     let newCarrito = [...carrito];
@@ -39,6 +57,11 @@ function agregar(id) {
     localStorage.setItem("carrito", JSON.stringify(newCarrito));
     actualizarContador(newCarrito.reduce((suma, item) => suma + item.cantidad, 0));
     actualizarCarrito();
+
+    Toast.fire({
+        icon: "success",
+        title: "Producto agregado al carrito"
+    });
 }
 
 function quitarProducto(id) {
@@ -46,18 +69,16 @@ function quitarProducto(id) {
     const productoIndex = carrito.findIndex(producto => producto.id === id);
 
     if (productoIndex >= 0) {
-        if (carrito[productoIndex].cantidad > 1) {
-
-            carrito[productoIndex].cantidad -= 1;
-        } else {
-
-            carrito.splice(productoIndex, 1);
-        }
+        (carrito[productoIndex].cantidad > 1) ? carrito[productoIndex].cantidad -= 1 : carrito.splice(productoIndex, 1);
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarCarrito();
     actualizarContador(carrito.reduce((suma, item) => suma + item.cantidad, 0));
+
+    Toast.fire({
+        title: "Producto eliminado del carrito"
+    });
 }
 
 function actualizarCarrito() {
@@ -125,9 +146,30 @@ function actualizarContador(cantidad) {
 }
 
 function vaciarCarrito() {
-    localStorage.removeItem("carrito");
-    actualizarContador(0);
-    document.getElementById("contenedor-carrito-productos").innerHTML = "";
+
+    Swal.fire({
+        title: "¿Está seguro que desea vaciar su carrito?",
+        text: "Esta acción no se puede revertir",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, vaciarlo"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            localStorage.removeItem("carrito");
+            actualizarContador(0);
+            document.getElementById("contenedor-carrito-productos").innerHTML = "";
+
+            Swal.fire({
+            title: "Carrito vacio",
+            text: "Se ha vaciado el carrito con éxito",
+            icon: "success"
+            });
+        }
+    });
 }
 
 function cargarProductos() {
@@ -138,14 +180,17 @@ function cargarProductos() {
         const div = document.createElement("div");
         div.classList.add('producto');
         div.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.titulo}">
-        <div class="info-card">
-            <p class='producto-titulo'>${producto.titulo}</p>
-            <div class="producto-precio">
-                <p>$${producto.precio}</p>
-            </div>
-            <button onclick="agregar(id)" class="producto-agregar" id='${producto.id}'>Agregar al carrito</button>
-        `;
+    <img src="${producto.imagen}" alt="${producto.titulo}">
+    <div class="info-card">
+        <p class='producto-titulo'>${producto.titulo}</p>
+        <div class="producto-precio">
+            <p>$${producto.precio}</p>
+        </div>
+    </div>
+    <div class="producto-agregar-container">
+        <button onclick="agregar('${producto.id}')" class="producto-agregar">Agregar al carrito</button>
+    </div>
+`;
 
         contenedorProductos.append(div);
 
@@ -169,20 +214,24 @@ vaciarCarritoButton.addEventListener('click', vaciarCarrito)
 
 cargarProductos();
 
-// SELECTOR DE SORTEOS
+const currentMode = localStorage.getItem('theme') || 'light';
 
-function seleccionarGanador() {
-    const textarea = document.getElementById("participantes");
-    const participantes = textarea.value.split("\n").filter(nombre => nombre.trim() !== "");
-
-    if (participantes.length === 0) {
-        alert("Por favor, ingresa al menos un participante.");
-        return;
-    }
-
-    const indiceGanador = Math.floor(Math.random() * participantes.length);
-    const ganador = participantes[indiceGanador];
-
-    const ganadorDiv = document.getElementById("ganador");
-    ganadorDiv.textContent = `¡El ganador es: ${ganador}! 🎉`;
+if (currentMode === 'dark') {
+document.body.classList.add('dark-mode');
+} else {
+document.body.classList.remove('dark-mode');
 }
+
+const modeToggle = document.getElementById('mode-toggle');
+modeToggle.addEventListener('change', () => {
+
+const currentMode = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+
+localStorage.setItem('theme', currentMode);
+
+if (currentMode === 'dark') {
+    document.body.classList.add('dark-mode');
+} else {
+    document.body.classList.remove('dark-mode');
+}
+});
