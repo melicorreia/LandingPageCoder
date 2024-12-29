@@ -2,7 +2,7 @@ let productos = [];
 
 const obtenerProductos = async () => {
     try {
-        const response = await fetch("../productos.json");
+        const response = await fetch("./json/productos.jsonn");
         const data = await response.json();
         
         productos = data;
@@ -14,7 +14,7 @@ const obtenerProductos = async () => {
             title: "Página en mantenimiento",
             text: "Disculpe las molestias ocasionadas, la página estará disponible a la brevedad. Mientras tanto puedes comunicarte por mail a lowindigital@gmail.com y le responderemos pronto",
             color:" #000000",
-            backdrop: "url(/img/fondo1.jpg) center fixed",
+            backdrop: "url(./img/fondo1.jpg) center fixed",
             allowEscapeKey: false,
             allowOutsideClick: false,
             showConfirmButton: false
